@@ -22,6 +22,24 @@ import java.awt.event.*; // For GUI events (not used here directly)
 import java.util.*;   // For collections like List, PriorityQueue, etc.
 import java.util.List;
 import javax.swing.Timer; // For animation timing (used in visual part, not here)
+/*
+ * Algorithm: Dijkstra's Shortest Path Algorithm
+ *
+ * 1. Initialize a priority queue (min-heap) to store cells based on distance.
+ * 2. Set the distance of the start cell to 0 and all others to infinity.
+ * 3. While the priority queue is not empty:
+ *    a. Extract the node with the smallest distance.
+ *    b. If it's the goal (value 9), reconstruct the path from goal to start using parent matrix.
+ *    c. For each of the 4 neighbors (up/down/left/right):
+ *       - If it's a valid cell and unvisited:
+ *         - Calculate new distance = current distance + 1 (uniform weight).
+ *         - If new distance is smaller, update it and push the neighbor into the queue.
+ *         - Set the parent of neighbor as current.
+ * 4. If the goal is reached, return true. Else, return false.
+ *
+ * Dijkstra ensures the shortest path in graphs with non-negative weights.
+ */
+
 
 // Dijkstra class containing the search algorithm
 class Dijkstra {
