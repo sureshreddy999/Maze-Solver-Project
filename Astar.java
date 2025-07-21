@@ -18,6 +18,26 @@ import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 import javax.swing.Timer;
+/*
+ * Algorithm: A* (A-Star) Pathfinding Algorithm
+ *
+ * 1. Initialize a priority queue to store nodes with priority = cost + heuristic (f = g + h).
+ * 2. Set g(start) = 0 and h(start) = heuristic from start to goal.
+ * 3. While the priority queue is not empty:
+ *    a. Poll the node with the lowest f-score.
+ *    b. If it's the goal (value 9), reconstruct the path using parent tracking.
+ *    c. For each neighbor (up/down/left/right):
+ *       - If it's valid and unvisited:
+ *         - Compute tentative g = current.g + 1.
+ *         - Compute h = Manhattan distance to goal.
+ *         - Compute f = g + h.
+ *         - If this f is better, update and add to queue.
+ *         - Mark as visited and update parent.
+ * 4. If the goal is found, build the path. Else return false.
+ *
+ * A* improves Dijkstra by adding a heuristic to guide the search towards the goal.
+ */
+
 
 class AStar {
 
