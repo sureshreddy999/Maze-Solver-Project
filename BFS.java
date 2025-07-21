@@ -19,6 +19,23 @@ import java.util.*;
 import java.util.List;
 import java.util.Queue;
 import javax.swing.Timer;
+/*
+ * Algorithm: Breadth-First Search (BFS)
+ *
+ * 1. Initialize a queue and add the starting cell (sx, sy) to it.
+ * 2. Mark the starting cell as visited.
+ * 3. While the queue is not empty:
+ *    a. Remove the front cell from the queue.
+ *    b. If it's the goal (value 9), reconstruct the path using parent tracking.
+ *    c. Otherwise, add all unvisited and valid neighbors (up/down/left/right) to the queue.
+ *       - Update their parent as the current cell.
+ *       - Mark them as visited.
+ * 4. If the goal is reached, reconstruct the path using the parent matrix.
+ * 5. If the queue becomes empty without reaching the goal, return false.
+ *
+ * BFS guarantees the shortest path in an unweighted grid by exploring level by level.
+ */
+
 
 public class BFS {
 
