@@ -1,38 +1,61 @@
+/*
+ * Depth-First Search (DFS) Pathfinding Algorithm in Java
+ *
+ * Aim:
+ * This program implements the Depth-First Search (DFS) algorithm to find a path in a 2D grid/maze 
+ * from a given starting point to the goal (represented by the number '9'). 
+ * DFS explores paths by going as deep as possible before backtracking. 
+ * Obstacles in the grid are represented by '1'. 
+ * This method marks visited paths with '2' to avoid cycles and repeated visits.
+ *
+ * Output:
+ * If a valid path to the goal is found, the function returns true and stores the sequence of 
+ * (x, y) positions in the 'path' list. Otherwise, it returns false if no path is found.
+ */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import java.util.List;
-
 import javax.swing.Timer;
 
-
 public class DepthFirst {
+
+    // DFS pathfinding method
     public static boolean searchpath(int[][] maze, int x, int y, List<Integer> path) {
+        // Check if current cell is out of bounds or is a wall (1)
         if (x < 0 || y < 0 || x >= maze[0].length || y >= maze.length || maze[y][x] == 1) {
             return false;
         }
-        
+
+        // Check if goal is reached
         if (maze[y][x] == 9) {
-            path.add(x);
-            path.add(y);
+            path.add(x); // Add goal x
+            path.add(y); // Add goal y
             return true;
         }
-        
+
+        // Visit unvisited cell (represented by 0)
         if (maze[y][x] == 0) {
-            maze[y][x] = 2; // Mark as visited
-            
+            maze[y][x] = 2; // Mark cell as visited
+
+            // Directions: left, right, up, down
             int[] dx = {-1, 1, 0, 0};
             int[] dy = {0, 0, -1, 1};
-            
+
+            // Explore each direction recursively
             for (int i = 0; i < 4; i++) {
                 if (searchpath(maze, x + dx[i], y + dy[i], path)) {
-                    path.add(x);
-                    path.add(y);
+                    path.add(x); // Add x on the path
+                    path.add(y); // Add y on the path
                     return true;
                 }
             }
         }
+
+        // Return false if no path is found from this cell
         return false;
     }
+
 }
