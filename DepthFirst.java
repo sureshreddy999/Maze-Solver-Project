@@ -19,6 +19,20 @@ import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 import javax.swing.Timer;
+/*
+ * Algorithm: Depth-First Search (DFS)
+ *
+ * 1. Start from the given starting cell (sx, sy).
+ * 2. Mark the current cell as visited.
+ * 3. If the current cell is the goal (value 9), add to path and return true.
+ * 4. Recursively explore each of the 4 directions: up, down, left, right.
+ *    - For each unvisited and valid neighbor (not a wall), recursively call DFS.
+ *    - If any recursive call returns true, current cell is part of the valid path.
+ * 5. If none of the neighbors lead to the goal, backtrack by returning false.
+ * 
+ * DFS uses recursion and explores a path as deep as possible before backtracking.
+ */
+
 
 public class DepthFirst {
 
